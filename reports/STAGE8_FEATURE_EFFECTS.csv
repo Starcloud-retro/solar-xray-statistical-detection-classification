@@ -1,0 +1,6 @@
+Feature,Cliffs_Delta_Cplus_vs_B,Magnitude
+rise_slope,0.5641025641025641,large
+max_roc,0.6666666666666666,large
+mean_pos_roc,0.5811965811965812,large
+rise_duration_min,0.6282051282051282,large
+bg_flux,0.36752136752136755,medium

@@ -1,0 +1,10 @@
+R/
+src/
+tests/
+data/
+reports/
+app.R
+requirements.txt
+.git/
+.gitignore
+.nojekyll

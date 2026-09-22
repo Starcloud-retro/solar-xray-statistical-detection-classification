@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Statistics for Machine Learning project using NOAA/GOES solar X-ray telemetry for statistical event detection and B vs C+ severity nowcasting.">
+  <title>Solar Activity SML | GOES X-Ray Time Series</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="hero">
+  <nav><strong>Solar Activity SML</strong><a href="#method">Method</a><a href="#results">Results</a><a href="#limitations">Limitations</a><a href="PROJECT_WALKTHROUGH.md">Walkthrough</a></nav>
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">STATISTICS FOR MACHINE LEARNING · PBL</p>
+      <h1>Statistical Detection and Classification of Solar Activity</h1>
+      <p class="lead">Real NOAA/GOES soft-X-ray telemetry → robust statistics → event detection → NOAA alignment → leakage-controlled B vs C+ severity nowcasting.</p>
+      <div class="chips"><span>NOAA/GOES</span><span>R</span><span>Time Series</span><span>Classical ML</span></div>
+    </div>
+    <div class="metric-grid">
+      <div><b>31</b><span>ML events</span></div>
+      <div><b>18 / 6 / 7</b><span>chronological split</span></div>
+      <div><b>5</b><span>primary predictors</span></div>
+      <div><b>t<sub>pred</sub>=t<sub>peak</sub></b><span>nowcasting point</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section>
+  <h2>The research question</h2>
+  <p>Can local statistical behavior in a changing solar X-ray signal identify flare-like events, and can the observed rise phase distinguish B-class events from C-or-above events without using post-peak information or peak flux as a predictor?</p>
+  <img src="web-assets/timeseries.png" alt="GOES X-ray time series">
+</section>
+
+<section id="method">
+  <h2>Scientific pipeline</h2>
+  <div class="pipeline">
+    <span>GOES X-rays</span><i>→</i><span>Cleaning</span><i>→</i><span>Rolling statistics</span><i>→</i><span>Anomaly detection</span><i>→</i><span>Events</span><i>→</i><span>NOAA</span><i>→</i><span>5 features</span><i>→</i><span>B / C+</span>
+  </div>
+  <div class="cards">
+    <article><h3>Robust statistics</h3><p>Mean/SD are complemented by median and scaled MAD so extreme flare values do not define the background scale.</p></article>
+    <article><h3>Temporal integrity</h3><p>Primary rise features use information available at or before the observed peak. Post-peak decay information is excluded.</p></article>
+    <article><h3>Independent events</h3><p>The ML unit is one deduplicated physical NOAA-aligned event, not one one-minute telemetry row.</p></article>
+  </div>
+</section>
+
+<section>
+  <h2>Event morphology</h2>
+  <div class="two">
+    <img src="web-assets/events.png" alt="Detected flare event profiles">
+    <img src="web-assets/rise-slope.png" alt="B versus C+ rise slope">
+  </div>
+  <p class="caption">Primary predictors: rise_slope, max_roc, mean_pos_roc, rise_duration_min, bg_flux. Peak flux is descriptive only.</p>
+</section>
+
+<section id="results">
+  <h2>Frozen Stage 8 experiment</h2>
+  <table>
+    <thead><tr><th>Model</th><th>Development Macro F1</th><th>Balanced Accuracy</th></tr></thead>
+    <tbody>
+      <tr><td>Logistic Regression</td><td>1.000</td><td>1.000</td></tr>
+      <tr><td>Decision Tree</td><td>0.778</td><td>0.900</td></tr>
+      <tr><td>Random Forest</td><td>0.778</td><td>0.900</td></tr>
+    </tbody>
+  </table>
+  <div class="result-callout"><b>Final chronological holdout: 7 / 7 observed correct</b><span>Final test N = 7. This does not establish generalization.</span></div>
+  <img src="web-assets/correlation.png" alt="Rise-rate predictor correlation">
+</section>
+
+<section id="limitations">
+  <h2>Scientific limitations remain visible</h2>
+  <ul>
+    <li>N = 31 independent ML events; final test N = 7.</li>
+    <li>Ordinary Logistic Regression exhibits complete separation and convergence warnings.</li>
+    <li>Rise-rate predictors have high multicollinearity.</li>
+    <li>Detector selection and NOAA alignment influence the supervised event population.</li>
+    <li>No external validation across another interval, instrument or solar-cycle population.</li>
+    <li>This is severity nowcasting at the observed peak — not pre-flare forecasting.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Project context</h2>
+  <p>This is an undergraduate statistical proof-of-concept and part of a broader exploration of astronomy, astrochemistry and data-driven space science. The specific project is most accurately described as heliophysics / statistical space-data analysis.</p>
+  <p><a class="button" href="README.md">Repository README</a> <a class="button secondary" href="FINAL_RESULTS.md">Frozen Results</a></p>
+</section>
+</main>
+
+<footer>Statistics for Machine Learning · Solar Activity PBL · NOAA/GOES X-Ray Time Series</footer>
+</body>
+</html>

@@ -1,0 +1,4 @@
+Model,Partition,N,B_Support,C_plus_Support,Accuracy,B_Precision,B_Recall,B_F1,C_plus_Precision,C_plus_Recall,C_plus_F1,Macro_F1,Balanced_Accuracy,Sensitivity,Specificity,TP,FP,TN,FN
+Logistic Regression,Development,6,1,5,1,1,1,1,1,1,1,1,1,1,1,5,0,1,0
+Decision Tree,Development,6,1,5,0.833333333333333,0.5,1,0.666666666666667,1,0.8,0.888888888888889,0.777777777777778,0.9,0.8,1,4,0,1,1
+Random Forest,Development,6,1,5,0.833333333333333,0.5,1,0.666666666666667,1,0.8,0.888888888888889,0.777777777777778,0.9,0.8,1,4,0,1,1

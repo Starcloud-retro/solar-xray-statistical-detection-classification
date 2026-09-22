@@ -1,0 +1,18 @@
+{
+  "original_rows": 19994,
+  "duplicates_removed": 0,
+  "invalid_sentinel_values_found": 922,
+  "missing_flux_values_pre_imputation": 922,
+  "short_gaps_interpolated": 2,
+  "long_gaps_uninterpolated": 1082,
+  "rows_removed": 0,
+  "rows_retained": 20156,
+  "retention_rate_pct": 100.81,
+  "audit_log": [
+    "Ingested 19994 raw observations.",
+    "Sorted observations chronologically by (energy, time_tag).",
+    "Zero duplicate timestamps detected.",
+    "Flagged 922 invalid/sentinel flux values as NaN.",
+    "Reindexed data to uniform 1-minute grid. Interpolated 2 short-gap samples (<= 3m). Preserved 1082 long-gap samples as NaN without interpolation."
+  ]
+}
