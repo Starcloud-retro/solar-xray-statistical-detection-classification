@@ -70,7 +70,7 @@ solar-activity-sml-final/
 ├── .vercelignore                   # Keeps scientific source/data out of web deployment
 ├── .nojekyll                       # Lets GitHub Pages serve the static files directly
 ├── .gitignore
-├── requirements.txt                # Python reference-environment dependencies
+├── requirements-python.txt                # Python reference-environment dependencies
 │
 ├── R/
 │   ├── 01_stats_primitives.R       # First-principles statistical primitives
@@ -300,14 +300,14 @@ Windows:
 
 ```powershell
 .venv\Scripts\activate
-pip install -r requirements.txt
+pip install -r requirements-python.txt
 ```
 
 Linux/macOS:
 
 ```bash
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements-python.txt
 ```
 
 ---

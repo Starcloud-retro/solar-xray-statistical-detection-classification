@@ -3,90 +3,407 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Statistics for Machine Learning project using NOAA/GOES solar X-ray telemetry for statistical event detection and B vs C+ severity nowcasting.">
-  <title>Solar Activity SML | GOES X-Ray Time Series</title>
+  <meta name="description" content="A guided scientific explanation of statistical solar-activity detection and B vs C+ severity nowcasting using NOAA/GOES soft X-ray time-series data.">
+  <title>Solar Activity SML — GOES X-Ray Statistical Study</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="hero">
-  <nav><strong>Solar Activity SML</strong><a href="#method">Method</a><a href="#results">Results</a><a href="#limitations">Limitations</a><a href="PROJECT_WALKTHROUGH.md">Walkthrough</a></nav>
-  <div class="hero-grid">
-    <div>
-      <p class="eyebrow">STATISTICS FOR MACHINE LEARNING · PBL</p>
-      <h1>Statistical Detection and Classification of Solar Activity</h1>
-      <p class="lead">Real NOAA/GOES soft-X-ray telemetry → robust statistics → event detection → NOAA alignment → leakage-controlled B vs C+ severity nowcasting.</p>
-      <div class="chips"><span>NOAA/GOES</span><span>R</span><span>Time Series</span><span>Classical ML</span></div>
+<header class="site-header">
+  <nav class="nav-wrap">
+    <a class="brand" href="#top">Solar Activity SML</a>
+    <div class="nav-links">
+      <a href="#observe">Observe</a>
+      <a href="#statistics">Statistics</a>
+      <a href="#events">Events</a>
+      <a href="#features">Features</a>
+      <a href="#ml">ML</a>
+      <a href="#results">Results</a>
     </div>
-    <div class="metric-grid">
-      <div><b>31</b><span>ML events</span></div>
-      <div><b>18 / 6 / 7</b><span>chronological split</span></div>
-      <div><b>5</b><span>primary predictors</span></div>
-      <div><b>t<sub>pred</sub>=t<sub>peak</sub></b><span>nowcasting point</span></div>
-    </div>
-  </div>
+  </nav>
 </header>
 
-<main>
-<section>
-  <h2>The research question</h2>
-  <p>Can local statistical behavior in a changing solar X-ray signal identify flare-like events, and can the observed rise phase distinguish B-class events from C-or-above events without using post-peak information or peak flux as a predictor?</p>
-  <img src="web-assets/timeseries.png" alt="GOES X-ray time series">
-</section>
+<main id="top">
+  <section class="hero section-shell">
+    <div class="hero-copy">
+      <p class="eyebrow">STATISTICS FOR MACHINE LEARNING · PBL</p>
+      <h1>Statistical Detection and Classification of Solar Activity</h1>
+      <p class="hero-subtitle">A guided scientific story built from real NOAA/GOES soft X-ray time-series data.</p>
+      <p class="hero-summary">
+        We begin with a physical measurement from the Sun, use statistics to define recent normal behavior,
+        detect sustained unusual activity, compare events with NOAA records, describe event shape numerically,
+        and finally evaluate a leakage-controlled <strong>B vs C+</strong> severity-nowcasting experiment.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#story">Follow the project story</a>
+        <a class="btn secondary" href="https://github.com/Starcloud-retro/solar-xray-statistical-dectection-classification" target="_blank" rel="noopener">View GitHub</a>
+      </div>
+    </div>
+    <div class="hero-metrics">
+      <div class="metric"><span class="metric-value">0.1–0.8 nm</span><span class="metric-label">GOES XRS-B</span></div>
+      <div class="metric"><span class="metric-value">31</span><span class="metric-label">ML events</span></div>
+      <div class="metric"><span class="metric-value">5</span><span class="metric-label">primary predictors</span></div>
+      <div class="metric"><span class="metric-value">t<sub>pred</sub>=t<sub>peak</sub></span><span class="metric-label">nowcasting point</span></div>
+    </div>
+  </section>
 
-<section id="method">
-  <h2>Scientific pipeline</h2>
-  <div class="pipeline">
-    <span>GOES X-rays</span><i>→</i><span>Cleaning</span><i>→</i><span>Rolling statistics</span><i>→</i><span>Anomaly detection</span><i>→</i><span>Events</span><i>→</i><span>NOAA</span><i>→</i><span>5 features</span><i>→</i><span>B / C+</span>
-  </div>
-  <div class="cards">
-    <article><h3>Robust statistics</h3><p>Mean/SD are complemented by median and scaled MAD so extreme flare values do not define the background scale.</p></article>
-    <article><h3>Temporal integrity</h3><p>Primary rise features use information available at or before the observed peak. Post-peak decay information is excluded.</p></article>
-    <article><h3>Independent events</h3><p>The ML unit is one deduplicated physical NOAA-aligned event, not one one-minute telemetry row.</p></article>
-  </div>
-</section>
+  <section id="story" class="section-shell">
+    <div class="section-kicker">THE ENTIRE PROJECT IN ONE LINE</div>
+    <div class="journey">
+      <span>SUN</span><b>→</b><span>X-RAYS</span><b>→</b><span>GOES DATA</span><b>→</b>
+      <span>NORMAL</span><b>→</b><span>UNUSUAL</span><b>→</b><span>EVENT</span><b>→</b>
+      <span>NOAA</span><b>→</b><span>FEATURES</span><b>→</b><span>B / C+</span><b>→</b><span>TEST</span>
+    </div>
+    <div class="three-cards">
+      <article>
+        <h3>Detection</h3>
+        <p class="question">Did something unusual happen?</p>
+        <p>We compare each new observation with recent solar background behavior.</p>
+      </article>
+      <article>
+        <h3>Nowcasting</h3>
+        <p class="question">At the observed peak, is this event B or C+?</p>
+        <p>This is the supervised classification task used in the final experiment.</p>
+      </article>
+      <article class="muted-card">
+        <h3>Forecasting</h3>
+        <p class="question">Will a flare happen before its observed signature?</p>
+        <p><strong>Not the task in this project.</strong></p>
+      </article>
+    </div>
+  </section>
 
-<section>
-  <h2>Event morphology</h2>
-  <div class="two">
-    <img src="web-assets/events.png" alt="Detected flare event profiles">
-    <img src="web-assets/rise-slope.png" alt="B versus C+ rise slope">
-  </div>
-  <p class="caption">Primary predictors: rise_slope, max_roc, mean_pos_roc, rise_duration_min, bg_flux. Peak flux is descriptive only.</p>
-</section>
+  <section id="observe" class="section-shell split">
+    <div>
+      <div class="section-kicker">01 · OBSERVE THE SUN</div>
+      <h2>How does the project begin?</h2>
+      <p class="lead">GOES repeatedly measures soft X-ray flux from the Sun. Those measurements, ordered by time, form the signal we analyze.</p>
+      <div class="concept-chain">
+        <span>Sun</span><b>→</b><span>soft X-rays</span><b>→</b><span>GOES XRS-B</span><b>→</b><span>1-minute observations</span><b>→</b><span>time series</span>
+      </div>
+      <div class="teach-box">
+        <strong>One data point means:</strong>
+        <p>a timestamp + one measured X-ray flux value.</p>
+      </div>
+      <details>
+        <summary>Technical detail</summary>
+        <p>The main analysis channel is GOES XRS-B, the 0.1–0.8 nm soft X-ray band used by NOAA for flare classification. Flux is measured in W/m².</p>
+      </details>
+    </div>
+    <figure>
+      <img src="web-assets/timeseries.png" alt="Actual GOES X-ray time series from the project">
+      <figcaption>Actual project time series. A spike is something to investigate — not automatically an official flare.</figcaption>
+    </figure>
+  </section>
 
-<section id="results">
-  <h2>Frozen Stage 8 experiment</h2>
-  <table>
-    <thead><tr><th>Model</th><th>Development Macro F1</th><th>Balanced Accuracy</th></tr></thead>
-    <tbody>
-      <tr><td>Logistic Regression</td><td>1.000</td><td>1.000</td></tr>
-      <tr><td>Decision Tree</td><td>0.778</td><td>0.900</td></tr>
-      <tr><td>Random Forest</td><td>0.778</td><td>0.900</td></tr>
-    </tbody>
-  </table>
-  <div class="result-callout"><b>Final chronological holdout: 7 / 7 observed correct</b><span>Final test N = 7. This does not establish generalization.</span></div>
-  <img src="web-assets/correlation.png" alt="Rise-rate predictor correlation">
-</section>
+  <section class="section-shell">
+    <div class="section-kicker">02 · PREPROCESSING</div>
+    <h2>Why not analyze the raw file directly?</h2>
+    <div class="four-cards">
+      <article><strong>Time order</strong><p>Every later calculation depends on the sequence of observations.</p></article>
+      <article><strong>Invalid values</strong><p>Non-positive or invalid flux values cannot safely enter logarithmic calculations.</p></article>
+      <article><strong>Short gaps</strong><p>Small gaps may be interpolated conservatively in log space.</p></article>
+      <article><strong>Long gaps</strong><p>Long gaps remain missing so we do not invent a false solar signal.</p></article>
+    </div>
+    <div class="research-note"><strong>Why this is scientific, not cosmetic:</strong> gaps can change slopes, rate-of-change values, durations and even apparent event peaks.</div>
+  </section>
 
-<section id="limitations">
-  <h2>Scientific limitations remain visible</h2>
-  <ul>
-    <li>N = 31 independent ML events; final test N = 7.</li>
-    <li>Ordinary Logistic Regression exhibits complete separation and convergence warnings.</li>
-    <li>Rise-rate predictors have high multicollinearity.</li>
-    <li>Detector selection and NOAA alignment influence the supervised event population.</li>
-    <li>No external validation across another interval, instrument or solar-cycle population.</li>
-    <li>This is severity nowcasting at the observed peak — not pre-flare forecasting.</li>
-  </ul>
-</section>
+  <section id="statistics" class="section-shell">
+    <div class="section-kicker">03 · DEFINE “NORMAL”</div>
+    <h2>Before calling something unusual, we must define recent normal behavior.</h2>
+    <div class="stats-grid">
+      <article>
+        <span class="tag">CENTER</span><h3>Mean</h3>
+        <p class="simple">“Where is the recent signal centered?”</p>
+        <code>x̄ = Σxᵢ / n</code>
+      </article>
+      <article>
+        <span class="tag">CENTER</span><h3>Median</h3>
+        <p class="simple">“What is the middle recent value?”</p>
+        <p>More resistant to extreme flare values.</p>
+      </article>
+      <article>
+        <span class="tag">SPREAD</span><h3>Standard deviation</h3>
+        <p class="simple">“How much does recent background normally vary?”</p>
+        <code>s = √[Σ(xᵢ−x̄)²/(n−1)]</code>
+      </article>
+      <article>
+        <span class="tag">ROBUST SPREAD</span><h3>MAD</h3>
+        <p class="simple">“How much does it vary without allowing extreme points to dominate?”</p>
+        <code>MAD = median(|xᵢ−median(x)|)</code>
+      </article>
+    </div>
+    <div class="example-box">
+      <div><strong>Why robust statistics?</strong></div>
+      <p>For values <code>4, 5, 4, 5, 40</code>, the large final value pulls the mean strongly upward, while the median stays near the normal cluster. That is the intuition behind using median/MAD alongside mean/SD.</p>
+    </div>
+  </section>
 
-<section>
-  <h2>Project context</h2>
-  <p>This is an undergraduate statistical proof-of-concept and part of a broader exploration of astronomy, astrochemistry and data-driven space science. The specific project is most accurately described as heliophysics / statistical space-data analysis.</p>
-  <p><a class="button" href="README.md">Repository README</a> <a class="button secondary" href="FINAL_RESULTS.md">Frozen Results</a></p>
-</section>
+  <section class="section-shell split reverse">
+    <figure>
+      <img src="web-assets/timeseries.png" alt="GOES time series used to explain local background">
+      <figcaption>The solar background changes with time, so “normal” must be estimated locally.</figcaption>
+    </figure>
+    <div>
+      <div class="section-kicker">04 · ROLLING STATISTICS</div>
+      <h2>Why does the baseline move?</h2>
+      <p class="lead">One average for an entire observation period cannot represent what is normal at every minute.</p>
+      <div class="step-list">
+        <div><span>1</span><p><strong>Look back</strong><br>Use recent earlier observations.</p></div>
+        <div><span>2</span><p><strong>Estimate</strong><br>Compute recent center and spread.</p></div>
+        <div><span>3</span><p><strong>Compare</strong><br>Judge the current observation against that background.</p></div>
+        <div><span>4</span><p><strong>Move forward</strong><br>Repeat at the next minute.</p></div>
+      </div>
+      <div class="research-note">The current observation is excluded from its own trailing baseline so an impulsive flare does not partially redefine the “normal” used to judge itself.</div>
+    </div>
+  </section>
+
+  <section class="section-shell">
+    <div class="section-kicker">05 · MEASURE UNUSUALNESS</div>
+    <h2>What do Z-score, robust Z, ROC and slope actually mean?</h2>
+    <div class="four-cards">
+      <article>
+        <h3>Z-score</h3>
+        <p class="simple">How far is the current value from recent ordinary background?</p>
+        <code>z = (x − μ) / σ</code>
+      </article>
+      <article>
+        <h3>Robust Z</h3>
+        <p class="simple">Same question, using median and MAD instead of mean and SD.</p>
+        <code>zᵣ = (x − median) / MADscaled</code>
+      </article>
+      <article>
+        <h3>ROC</h3>
+        <p class="simple">How quickly did the X-ray signal change from one observation to the next?</p>
+        <code>Δ log₁₀(flux)</code>
+      </article>
+      <article>
+        <h3>Local slope</h3>
+        <p class="simple">Is the signal showing a sustained directional rise?</p>
+        <code>x ≈ β₀ + β₁t</code>
+      </article>
+    </div>
+    <div class="warning-note"><strong>ROC here means Rate of Change.</strong> It is not a Receiver Operating Characteristic curve. Also, the project Z-score is an anomaly score, not a p-value-based Z-test.</div>
+  </section>
+
+  <section id="events" class="section-shell">
+    <div class="section-kicker">06 · FROM POINTS TO AN EVENT</div>
+    <h2>One unusual minute is not enough.</h2>
+    <div class="journey compact">
+      <span>Z / robust Z / ROC</span><b>→</b><span>threshold evidence</span><b>→</b><span>≥3-point persistence</span><b>→</b><span>START / PEAK / END</span>
+    </div>
+    <div class="two-cards">
+      <article>
+        <h3>Persistence</h3>
+        <p>A single high score may be noise. Requiring several consecutive unusual observations reduces isolated false triggers.</p>
+      </article>
+      <article>
+        <h3>Segmentation</h3>
+        <p>Contiguous detected points are converted into a discrete event with a start, observed peak and end.</p>
+      </article>
+    </div>
+    <figure class="wide-figure">
+      <img src="web-assets/events.png" alt="Actual event profiles from the project">
+      <figcaption>Actual project event profiles. Once segmented, an event becomes the unit we can compare with NOAA and later describe numerically.</figcaption>
+    </figure>
+  </section>
+
+  <section class="section-shell">
+    <div class="section-kicker">07 · NOAA ALIGNMENT</div>
+    <h2>How do we know whether our statistical event corresponds to an official record?</h2>
+    <div class="alignment">
+      <div><span class="big-number">115</span><p>statistically detected events</p></div>
+      <b>compare timing with NOAA</b>
+      <div><span class="big-number">32</span><p>matched detections</p></div>
+    </div>
+    <div class="metrics-row">
+      <div><strong>35</strong><span>NOAA records</span></div>
+      <div><strong>34</strong><span>valid NOAA peaks</span></div>
+      <div><strong>80</strong><span>unmatched detections</span></div>
+      <div><strong>3</strong><span>unmatched NOAA</span></div>
+      <div><strong>1.76 min</strong><span>mean peak error</span></div>
+      <div><strong>0.00 min</strong><span>median peak error</span></div>
+    </div>
+    <div class="warning-note"><strong>Important interpretation:</strong> an unmatched statistical detection is not automatically a proven “false physical flare.” It may be sub-B activity, statistical fluctuation or noise not represented in the official NOAA flare list.</div>
+  </section>
+
+  <section id="features" class="section-shell">
+    <div class="section-kicker">08 · FEATURE ENGINEERING</div>
+    <h2>How does an event curve become five numbers?</h2>
+    <p class="lead">The classifier does not receive a picture of the flare. We measure interpretable properties of its rise.</p>
+    <div class="five-features">
+      <article><span>1</span><h3>rise_slope</h3><p>How steeply did the event rise?</p></article>
+      <article><span>2</span><h3>max_roc</h3><p>What was the fastest observed rise?</p></article>
+      <article><span>3</span><h3>mean_pos_roc</h3><p>How strong was the positive rise on average?</p></article>
+      <article><span>4</span><h3>rise_duration_min</h3><p>How long did START→PEAK take?</p></article>
+      <article><span>5</span><h3>bg_flux</h3><p>What X-ray background did the event rise from?</p></article>
+    </div>
+    <div class="two-figures">
+      <figure><img src="web-assets/rise-slope.png" alt="Rise slope distribution by class"><figcaption>Observed B vs C+ morphology for rise slope.</figcaption></figure>
+      <figure><img src="web-assets/correlation.png" alt="Correlation among rise-rate predictors"><figcaption>The rise-rate predictors carry overlapping information.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section-shell leakage-section">
+    <div class="section-kicker">09 · PREDICTION-TIME INTEGRITY</div>
+    <h2>What is the model allowed to know?</h2>
+    <div class="timeline">
+      <div class="allowed"><span>START</span><span>RISE</span><span>PEAK</span></div>
+      <div class="boundary"><b>t<sub>pred</sub> = t<sub>peak</sub></b></div>
+      <div class="forbidden"><span>DECAY</span><span>END</span></div>
+    </div>
+    <div class="two-cards">
+      <article>
+        <h3>Available to the nowcast</h3>
+        <p>Background + rise information through the observed peak.</p>
+        <p><code>max_roc</code> and <code>mean_pos_roc</code> are computed from START→PEAK only.</p>
+      </article>
+      <article class="warning-card">
+        <h3>peak_flux is not a primary predictor</h3>
+        <p>NOAA flare class itself is defined from peak X-ray flux. Supplying peak flux would expose the target definition.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="ml" class="section-shell">
+    <div class="section-kicker">10 · BUILD THE ML DATASET</div>
+    <h2>One physical event becomes one supervised row.</h2>
+    <div class="dataset-flow">
+      <div><strong>35</strong><span>initial labeled rows</span></div>
+      <b>→</b>
+      <div><strong>32</strong><span>independent physical NOAA events</span></div>
+      <b>→ exclude U →</b>
+      <div><strong>31</strong><span>ML-eligible events</span></div>
+    </div>
+    <div class="two-cards">
+      <article><h3>B = 13</h3><p>NOAA B-class events.</p></article>
+      <article><h3>C+ = 18</h3><p>NOAA C and M events combined because the sample is small.</p></article>
+    </div>
+    <div class="research-note">Deduplication matters because multiple detections of one physical NOAA event must not become multiple supposedly independent training examples.</div>
+  </section>
+
+  <section class="section-shell">
+    <div class="section-kicker">11 · CHRONOLOGICAL EXPERIMENT</div>
+    <h2>How did we test the classification problem?</h2>
+    <div class="split-bar">
+      <div class="train"><strong>18 TRAIN</strong><span>7 B · 11 C+</span><small>learn parameters</small></div>
+      <div class="dev"><strong>6 DEVELOPMENT</strong><span>1 B · 5 C+</span><small>compare predefined models</small></div>
+      <div class="test"><strong>7 FINAL TEST</strong><span>5 B · 2 C+</span><small>evaluate after the decision is frozen</small></div>
+    </div>
+    <div class="three-cards">
+      <article><h3>Logistic Regression</h3><p>Estimates a probability of C+ from the five predictors.</p></article>
+      <article><h3>Decision Tree</h3><p>Uses a sequence of feature-based if–then splits.</p></article>
+      <article><h3>Random Forest</h3><p>Combines votes from many decision trees.</p></article>
+    </div>
+    <div class="research-note">The final test is never used to choose the model. Chronological splitting better matches the intended “learn from earlier events, evaluate on later events” use.</div>
+  </section>
+
+  <section id="results" class="section-shell">
+    <div class="section-kicker">12 · RESULTS</div>
+    <h2>What did the frozen experiment actually show?</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Development model</th><th>Macro F1</th><th>Balanced Accuracy</th></tr></thead>
+        <tbody>
+          <tr><td>Logistic Regression</td><td>1.000</td><td>1.000</td></tr>
+          <tr><td>Decision Tree</td><td>0.778</td><td>0.900</td></tr>
+          <tr><td>Random Forest</td><td>0.778</td><td>0.900</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The predefined development procedure froze Logistic Regression for the final test.</p>
+    <div class="result-grid">
+      <div class="confusion">
+        <h3>Final chronological test</h3>
+        <table>
+          <thead><tr><th></th><th>Pred B</th><th>Pred C+</th></tr></thead>
+          <tbody><tr><th>Actual B</th><td>5</td><td>0</td></tr><tr><th>Actual C+</th><td>0</td><td>2</td></tr></tbody>
+        </table>
+      </div>
+      <div class="result-callout">
+        <span class="big-result">7 / 7</span>
+        <strong>observed correct</strong>
+        <p>in this frozen final holdout</p>
+        <div class="warning-note"><strong>Final test N = 7.</strong> This does not establish broad generalization.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell">
+    <div class="section-kicker">13 · WHY THE RESULT MUST BE INTERPRETED CAUTIOUSLY</div>
+    <h2>Research-level analysis means reporting what the evidence cannot support.</h2>
+    <div class="three-cards">
+      <article>
+        <h3>Complete separation</h3>
+        <p>The training classes are perfectly linearly separable, so ordinary Logistic Regression coefficients are not stable finite effect estimates.</p>
+      </article>
+      <article>
+        <h3>High multicollinearity</h3>
+        <p><code>rise_slope</code>, <code>max_roc</code> and <code>mean_pos_roc</code> describe related rise behavior and are strongly correlated.</p>
+      </article>
+      <article>
+        <h3>No external validation</h3>
+        <p>The experiment has not been validated on a separate solar-cycle interval or another independent population.</p>
+      </article>
+    </div>
+    <div class="metrics-row compact-metrics">
+      <div><strong>≈35.2</strong><span>VIF rise_slope</span></div>
+      <div><strong>≈20.4</strong><span>VIF max_roc</span></div>
+      <div><strong>≈19.7</strong><span>VIF mean_pos_roc</span></div>
+      <div><strong>31</strong><span>total ML events</span></div>
+      <div><strong>7</strong><span>final-test events</span></div>
+    </div>
+  </section>
+
+  <section class="section-shell">
+    <div class="section-kicker">14 · SHINY DEMONSTRATION</div>
+    <h2>What is the R Shiny application for?</h2>
+    <p class="lead">The website explains the project. Shiny lets us interact with the frozen scientific outputs.</p>
+    <div class="journey compact">
+      <span>GOES data</span><b>→</b><span>baseline</span><b>→</b><span>event</span><b>→</b><span>NOAA</span><b>→</b><span>features</span><b>→</b><span>ML evaluation</span>
+    </div>
+    <div class="two-cards">
+      <article><h3>What Shiny does</h3><p>Loads processed project artifacts, lets the presenter inspect events and graphs, and explains the frozen experiment interactively.</p></article>
+      <article><h3>What Shiny does not do</h3><p>It does not silently retrain the models or alter detector thresholds during the presentation.</p></article>
+    </div>
+  </section>
+
+  <section class="section-shell final-scope">
+    <div class="section-kicker">15 · FINAL SCOPE</div>
+    <h2>What did this project actually demonstrate?</h2>
+    <div class="two-cards">
+      <article>
+        <h3>Demonstrated</h3>
+        <ul>
+          <li>Real GOES X-ray time-series processing</li>
+          <li>Local and robust statistical background estimation</li>
+          <li>Sequential anomaly/event detection</li>
+          <li>NOAA alignment and event construction</li>
+          <li>Leakage-controlled event features</li>
+          <li>Small-sample B vs C+ nowcasting experiment</li>
+        </ul>
+      </article>
+      <article class="warning-card">
+        <h3>Not established</h3>
+        <ul>
+          <li>Operational flare forecasting</li>
+          <li>Production readiness</li>
+          <li>Broad population generalization</li>
+          <li>Stable causal Logistic coefficients</li>
+          <li>Superiority of one algorithm</li>
+        </ul>
+      </article>
+    </div>
+    <blockquote>Undergraduate statistical proof-of-concept for solar-event detection and severity nowcasting.</blockquote>
+    <div class="hero-actions">
+      <a class="btn primary" href="https://github.com/Starcloud-retro/solar-xray-statistical-dectection-classification" target="_blank" rel="noopener">Explore source on GitHub</a>
+      <a class="btn secondary" href="#top">Back to top</a>
+    </div>
+  </section>
 </main>
 
-<footer>Statistics for Machine Learning · Solar Activity PBL · NOAA/GOES X-Ray Time Series</footer>
+<footer>
+  <strong>Statistics for Machine Learning · Solar Activity PBL</strong>
+  <span>NOAA/GOES X-Ray Time-Series · CSE (AI & ML)</span>
+</footer>
 </body>
 </html>

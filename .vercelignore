@@ -4,7 +4,8 @@ tests/
 data/
 reports/
 app.R
-requirements.txt
+*.md
+requirements-python.txt
 .git/
 .gitignore
 .nojekyll
