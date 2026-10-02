@@ -1,0 +1,38 @@
+/* ============ Observatory Plate — design tokens ============ */
+@font-face{font-family:"Fraunces";src:url("../assets/fonts/fraunces-latin-opsz-normal.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Fraunces";src:url("../assets/fonts/fraunces-latin-opsz-italic.woff2") format("woff2");font-weight:100 900;font-style:italic;font-display:swap}
+@font-face{font-family:"Source Sans 3";src:url("../assets/fonts/source-sans-3-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Source Sans 3";src:url("../assets/fonts/source-sans-3-latin-400-italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Source Sans 3";src:url("../assets/fonts/source-sans-3-latin-600-normal.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+
+:root{
+  /* space */
+  --space-0:#05070F;   /* page */
+  --space-1:#0A1020;   /* alternate chapter band */
+  --space-2:#101838;   /* indigo wash, gradients only */
+  --hair:rgba(243,237,226,.14);
+  --hair-2:rgba(243,237,226,.28);
+  /* text (warm-tinted, never steel) */
+  --text-1:#F3EDE2;
+  --text-2:#BDB6A8;
+  --text-3:#8E8A82;
+  /* meaning */
+  --orange:#F28A2E;    /* Sun, detected events */
+  --gold:#F6C453;      /* NOAA reference, peaks */
+  --cyan:#5BC8F0;      /* measured data, mean, SD */
+  --teal:#2EC4A5;      /* robust statistics, reconstructed */
+  --coral:#FF6B57;     /* missing, warnings, leakage only */
+  /* type */
+  --serif:"Fraunces","Iowan Old Style",Georgia,"Times New Roman",serif;
+  --sans:"Source Sans 3","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  /* layout */
+  --measure:62ch;
+  --fig-width:1320px;
+  --s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:48px;--s6:72px;--s7:112px;--s8:160px;
+  --radius:2px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --dur:600ms;
+}

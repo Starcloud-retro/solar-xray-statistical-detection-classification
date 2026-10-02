@@ -1,0 +1,27 @@
+{
+  "_source": "Transcribed by hand from brief/SCIENTIFIC_GROUND_TRUTH.md (frozen). tests/validate.mjs cross-checks what can be recomputed from the CSVs.",
+  "data": {"rows": 10078, "raw_measured": 9536, "reconstructed": 1, "usable": 9537, "missing": 541,
+           "start": "2026-09-04 13:40", "end": "2026-09-11 13:37", "days": 6.998, "channel": "0.1-0.8nm", "satellite": 18},
+  "preprocessing": {"short_gap_limit_min": 3, "imputed_time": "2026-09-06 19:34", "imputed_flux": 3.872302027480114e-07,
+                    "imputed_log10": -6.412030776427569, "long_gap_example": ["2026-09-04 16:31", "2026-09-04 16:36"]},
+  "detector": {"z_mean": 3.0, "z_mad": 3.0, "roc": 0.05, "persistence": 3, "window_min": 30, "mad_scale": 1.4826, "mad_normal": 0.67449},
+  "noaa": {"records": 35, "valid_peaks": 34, "detected": 115, "matched": 32, "unmatched": 80, "unmatched_noaa": 3,
+           "precision": 0.2857, "recall": 0.9143, "f1": 0.4354, "mean_abs_err": 1.76, "median_abs_err": 0.0},
+  "dataset": {"labeled_rows": 35, "duplicates": 3, "physical": 32, "B": 13, "C": 17, "M": 1, "U": 1, "ml": 31, "Cplus": 18},
+  "split": {"train": {"n": 18, "B": 7, "Cp": 11}, "dev": {"n": 6, "B": 1, "Cp": 5}, "test": {"n": 7, "B": 5, "Cp": 2}},
+  "predictors": ["rise_slope", "max_roc", "mean_pos_roc", "rise_duration_min", "bg_flux"],
+  "dev_metrics": {
+    "Logistic Regression": {"acc": 1.0, "macro_f1": 1.0, "bal_acc": 1.0},
+    "Decision Tree": {"acc": 0.833333, "macro_f1": 0.777778, "bal_acc": 0.9},
+    "Random Forest": {"acc": 0.833333, "macro_f1": 0.777778, "bal_acc": 0.9}},
+  "final_test": {"correct": 7, "n": 7, "BB": 5, "BC": 0, "CB": 0, "CC": 2},
+  "loocv": {
+    "Logistic Regression": {"acc": 0.9677419, "macro_f1": 0.9665, "bal_acc": 0.9615, "TP": 18, "FP": 1, "TN": 12, "FN": 0},
+    "Decision Tree": {"acc": 0.80645, "macro_f1": 0.7961, "bal_acc": 0.7906},
+    "Random Forest": {"acc": 0.90323, "macro_f1": 0.89946, "bal_acc": 0.8953}},
+  "corr": {"rise_slope|max_roc": 0.956406, "rise_slope|mean_pos_roc": 0.967860, "max_roc|mean_pos_roc": 0.912808},
+  "vif": {"rise_slope": 35.223262, "max_roc": 20.393247, "mean_pos_roc": 19.702162, "rise_duration_min": 2.463870, "bg_flux": 1.468969},
+  "stage85": {"max_roc_changed": 0, "mean_pos_roc_changed": 2,
+              "EVT_0048": {"before": 0.0157942557746265, "after": 0.0213969463709113},
+              "EVT_0080": {"before": 0.0431450811896537, "after": 0.0461589500464445}}
+}

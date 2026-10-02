@@ -1,0 +1,53 @@
+// Static validation: run with `node tests/validate.mjs` from the site root (no dependencies).
+import fs from "fs"; import path from "path";
+const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
+const rd = f => fs.readFileSync(path.join(root, f), "utf8");
+let fail = 0; const ok = (c, m) => { console.log((c ? "PASS " : "FAIL ") + m); if (!c) fail++; };
+const html = rd("index.html");
+ok(!/<iframe/i.test(html), "no iframes");
+ok(!/<script(?![^>]*type="module")[^>]*src/i.test(html), "only module scripts");
+const ids = new Set([...html.matchAll(/id="([^"]+)"/g)].map(m => m[1]));
+const bad = [...html.matchAll(/href="#([^"]+)"/g)].map(m => m[1]).filter(i => !ids.has(i) && i !== "top");
+ok(bad.length === 0, "all in-page anchors resolve " + bad.join(","));
+const refs = [...html.matchAll(/(?:href|src)="((?!https?:|#|data:)[^"]+)"/g)].map(m => m[1]);
+ok(refs.every(r => fs.existsSync(path.join(root, r))), "all linked local files exist (" + refs.length + ")");
+const jsFiles = fs.readdirSync(path.join(root, "js"));
+const imports = jsFiles.flatMap(f => [...rd("js/" + f).matchAll(/from "\.\/([^"]+)"/g)].map(m => m[1]));
+ok(imports.every(i => fs.existsSync(path.join(root, "js", i))), "all JS imports resolve (" + imports.length + ")");
+ok(/ch\d\d-.*\.js/.test(jsFiles.join()), "one JS module per chapter: " + jsFiles.filter(f => /^ch/.test(f)).length);
+// ground truth vs recomputable data
+const gt = JSON.parse(rd("data/derived/ground_truth.json"));
+const csv = rd("data/goes_xrs_cleaned.csv").replace(/\r/g, "").split("\n").filter(Boolean); const head = csv[0].split(",");
+const col = n => head.indexOf(n);
+const rows = csv.slice(1).map(l => l.split(",")).filter(c => c[col("energy")] === "0.1-0.8nm");
+ok(rows.length === gt.data.rows, `XRS-B rows = ${rows.length}`);
+ok(rows.filter(c => c[col("flux")] !== "").length === gt.data.raw_measured, "raw measured = 9,536");
+ok(rows.filter(c => c[col("flux_clean")] !== "").length === gt.data.usable, "usable = 9,537");
+ok(rows.filter(c => c[col("was_imputed")] === "True").length === gt.data.reconstructed, "reconstructed = 1");
+ok(rows.filter(c => c[col("flux_clean")] === "").length === gt.data.missing, "missing = 541");
+ok(rows[0][0].startsWith("2026-09-04 13:40") && rows.at(-1)[0].startsWith("2026-09-11 13:37"), "time window");
+const imp = rows.find(c => c[col("was_imputed")] === "True"); ok(imp[0].startsWith("2026-09-06 19:34") && Math.abs(+imp[col("log10_flux_clean")] - gt.preprocessing.imputed_log10) < 1e-9, "imputed row 19:34, log10 = -6.41203");
+const ev = rd("data/labeled_events_deduplicated.csv").replace(/\r/g, "").split("\n").filter(Boolean); const eh = ev[0].split(",");
+const E = ev.slice(1).map(l => { const c = l.split(","), o = {}; eh.forEach((k, i) => o[k] = c[i]); return o; });
+const cls = k => E.filter(e => e.noaa_class_letter === k).length;
+ok(E.length === 32 && cls("B") === 13 && cls("C") === 17 && cls("M") === 1 && cls("U") === 1, "32 events: B13 C17 M1 U1");
+const ml = E.filter(e => e.noaa_class_letter !== "U").sort((a, b) => a.peak_time < b.peak_time ? -1 : 1);
+const grp = a => `${a.filter(e => e.noaa_class_letter === "B").length}/${a.filter(e => e.noaa_class_letter !== "B").length}`;
+ok(ml.length === 31 && grp(ml) === "13/18", "ML set 31 = 13 B / 18 C+");
+ok(grp(ml.slice(0, 18)) === "7/11" && grp(ml.slice(18, 24)) === "1/5" && grp(ml.slice(24)) === "5/2", "chronological split 18 (7/11), 6 (1/5), 7 (5/2)");
+const noaa = JSON.parse(rd("data/derived/noaa_alignment.json")).aggregate;
+ok(noaa.detected_events === 115 && noaa.matched_detections === 32 && noaa.unmatched_detections === 80 && noaa.unmatched_noaa === 3 && noaa.precision === 0.2857 && noaa.recall === 0.9143 && noaa.f1 === 0.4354, "NOAA aggregate matches ground truth");
+ok(32 / 112 > 0.2857 - 5e-5 && 32 / 112 < 0.2857 + 5e-5 && Math.abs(32 / 35 - 0.9143) < 5e-5, "precision = 32/112 and recall = 32/35 recompute");
+const vif = rd("data/derived/STAGE8_TRAIN_VIF_CURRENT.csv"); ok(/rise_slope,35\.2232/.test(vif) && /bg_flux,1\.4689/.test(vif), "VIF table");
+// text and numbers on the page
+ok(/9,536/.test(html) && /9,537/.test(html) && /541/.test(html) && /10,078/.test(html), "count chapter states 10,078 / 9,536 / 9,537 / 541");
+ok(/N = 7/.test(rd("js/ch09-model.js")) && /does not establish generalization/.test(rd("js/ch09-model.js")), "final test shows N = 7 and the generalization caveat");
+ok(/not forecasting/i.test(html), "nowcasting vs forecasting stated");
+ok(!/(best|worst) model/i.test(html + rd("js/ch09-model.js") + rd("js/ch10-audit.js")), "no best/worst model language");
+// contrast (WCAG) for text colours on page backgrounds
+const lum = h => { const c = [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255).map(v => v <= .03928 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4); return .2126 * c[0] + .7152 * c[1] + .0722 * c[2]; };
+const cr = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return (x + .05) / (y + .05); };
+const tk = rd("css/tokens.css"); const v = n => tk.match(new RegExp("--" + n + ":\\s*(#[0-9A-Fa-f]{6})"))[1];
+for (const bg of ["space-0", "space-1"]) for (const t of ["text-1", "text-2", "text-3", "orange", "gold", "cyan", "teal", "coral"]) ok(cr(v(t), v(bg)) >= 4.5, `contrast ${t} on ${bg} = ${cr(v(t), v(bg)).toFixed(1)}`);
+ok(cr("#1a0d02", v("orange")) >= 4.5, "button text on orange");
+console.log(fail ? `\n${fail} FAILED` : "\nall checks passed"); process.exit(fail ? 1 : 0);
