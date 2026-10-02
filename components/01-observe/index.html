@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Component 02 · CSV → Time Series</title>
+  <link rel="stylesheet" href="component.css">
+</head>
+<body>
+  <main class="component-shell">
+    <section class="intro">
+      <p class="eyebrow">01 · OBSERVE</p>
+      <h1>A time-series graph is just the CSV, drawn in time order.</h1>
+      <p>
+        Every dot below is one real GOES XRS-B row from the project.
+        Move through the observations and watch the highlighted CSV row become the highlighted point on the graph.
+      </p>
+    </section>
+
+    <section class="story-frame">
+      <div class="story-topline">
+        <div>
+          <span class="mini-label">SOURCE</span>
+          <strong>data/processed/goes_xrs_cleaned.csv</strong>
+        </div>
+        <div>
+          <span class="mini-label">CHANNEL</span>
+          <strong>GOES XRS-B · 0.1–0.8 nm</strong>
+        </div>
+        <div>
+          <span class="mini-label">DATASET WINDOW</span>
+          <strong id="datasetWindow">loading…</strong>
+        </div>
+      </div>
+
+      <div class="stage">
+        <section class="csv-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="mini-label">THE CSV</span>
+              <h2>One row = one minute-level observation</h2>
+            </div>
+            <span class="row-counter" id="rowCounter">row —</span>
+          </div>
+
+          <div class="csv-header grid-row">
+            <span>time_tag</span>
+            <span>flux_clean</span>
+            <span>log10_flux</span>
+          </div>
+          <div class="csv-window" id="csvWindow"></div>
+
+          <div class="row-explanation">
+            <div class="link-dot"></div>
+            <div>
+              <span class="mini-label">CURRENT ROW</span>
+              <strong id="currentTime">—</strong>
+              <p>
+                The flux value in this row determines the vertical position of the matching point;
+                the timestamp determines its horizontal position.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <div class="conversion">
+          <span></span>
+          <b>same observation</b>
+          <i>→</i>
+        </div>
+
+        <section class="chart-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="mini-label">THE PLOT</span>
+              <h2>Rows become points. Points become a signal.</h2>
+            </div>
+            <button id="playButton" class="play-btn">Pause</button>
+          </div>
+
+          <div class="chart-wrap">
+            <svg id="chart" viewBox="0 0 760 420" role="img" aria-label="GOES XRS-B time-series plot"></svg>
+
+            <div class="current-reading">
+              <span class="mini-label">SELECTED OBSERVATION</span>
+              <strong id="currentFlux">— W/m²</strong>
+              <small id="currentLog">log10 = —</small>
+            </div>
+          </div>
+
+          <div class="scrubber-wrap">
+            <input id="scrubber" type="range" min="0" max="179" value="0" aria-label="Move through GOES observations">
+            <div class="scrubber-labels">
+              <span>earlier</span>
+              <span>drag to inspect real rows</span>
+              <span>later</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="takeaway">
+        <span class="takeaway-number">10,078</span>
+        <div>
+          <strong>These are observations, not 10,078 flares.</strong>
+          <p>
+            The detector later groups unusual consecutive minutes into event intervals.
+            That is why the project can begin with thousands of rows but end with far fewer event-level ML samples.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="component.js"></script>
+</body>
+</html>

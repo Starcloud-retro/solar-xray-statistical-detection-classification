@@ -1,0 +1,408 @@
+{
+  "split": {
+    "Train": {
+      "N": 18,
+      "B": 7,
+      "C+": 11
+    },
+    "Development": {
+      "N": 6,
+      "B": 1,
+      "C+": 5
+    },
+    "Final test": {
+      "N": 7,
+      "B": 5,
+      "C+": 2
+    }
+  },
+  "rows": [
+    {
+      "event_id": "EVT_0003",
+      "peak_time": "2026-09-04 19:21:00",
+      "class": "C6.7",
+      "group": "C+",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0004",
+      "peak_time": "2026-09-04 21:19:00",
+      "class": "C1.2",
+      "group": "C+",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0005",
+      "peak_time": "2026-09-04 22:41:00",
+      "class": "B9.5",
+      "group": "B",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0011",
+      "peak_time": "2026-09-05 03:53:00",
+      "class": "B6.2",
+      "group": "B",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0016",
+      "peak_time": "2026-09-05 10:44:00",
+      "class": "C6.4",
+      "group": "C+",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0017",
+      "peak_time": "2026-09-05 12:02:00",
+      "class": "C1.5",
+      "group": "C+",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0019",
+      "peak_time": "2026-09-05 15:18:00",
+      "class": "M1.0",
+      "group": "C+",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0020",
+      "peak_time": "2026-09-05 17:46:00",
+      "class": "C8.5",
+      "group": "C+",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0030",
+      "peak_time": "2026-09-06 05:03:00",
+      "class": "B8.4",
+      "group": "B",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0034",
+      "peak_time": "2026-09-06 10:42:00",
+      "class": "C5.0",
+      "group": "C+",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0036",
+      "peak_time": "2026-09-06 13:34:00",
+      "class": "C1.1",
+      "group": "C+",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0048",
+      "peak_time": "2026-09-07 08:06:00",
+      "class": "B7.9",
+      "group": "B",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0050",
+      "peak_time": "2026-09-07 14:59:00",
+      "class": "B7.8",
+      "group": "B",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0054",
+      "peak_time": "2026-09-07 19:35:00",
+      "class": "C1.0",
+      "group": "C+",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0067",
+      "peak_time": "2026-09-08 12:24:00",
+      "class": "C2.4",
+      "group": "C+",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0070",
+      "peak_time": "2026-09-08 15:34:00",
+      "class": "B6.1",
+      "group": "B",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0072",
+      "peak_time": "2026-09-08 17:43:00",
+      "class": "C2.8",
+      "group": "C+",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0074",
+      "peak_time": "2026-09-08 20:07:00",
+      "class": "B6.4",
+      "group": "B",
+      "partition": "Train"
+    },
+    {
+      "event_id": "EVT_0075",
+      "peak_time": "2026-09-08 20:43:00",
+      "class": "C1.2",
+      "group": "C+",
+      "partition": "Development"
+    },
+    {
+      "event_id": "EVT_0076",
+      "peak_time": "2026-09-08 22:24:00",
+      "class": "C2.6",
+      "group": "C+",
+      "partition": "Development"
+    },
+    {
+      "event_id": "EVT_0077",
+      "peak_time": "2026-09-08 23:39:00",
+      "class": "C3.4",
+      "group": "C+",
+      "partition": "Development"
+    },
+    {
+      "event_id": "EVT_0079",
+      "peak_time": "2026-09-09 04:46:00",
+      "class": "B5.0",
+      "group": "B",
+      "partition": "Development"
+    },
+    {
+      "event_id": "EVT_0080",
+      "peak_time": "2026-09-09 06:10:00",
+      "class": "C1.5",
+      "group": "C+",
+      "partition": "Development"
+    },
+    {
+      "event_id": "EVT_0082",
+      "peak_time": "2026-09-09 10:32:00",
+      "class": "C3.2",
+      "group": "C+",
+      "partition": "Development"
+    },
+    {
+      "event_id": "EVT_0088",
+      "peak_time": "2026-09-10 00:40:00",
+      "class": "C1.4",
+      "group": "C+",
+      "partition": "Final test"
+    },
+    {
+      "event_id": "EVT_0093",
+      "peak_time": "2026-09-10 07:46:00",
+      "class": "B6.0",
+      "group": "B",
+      "partition": "Final test"
+    },
+    {
+      "event_id": "EVT_0097",
+      "peak_time": "2026-09-10 13:50:00",
+      "class": "B5.6",
+      "group": "B",
+      "partition": "Final test"
+    },
+    {
+      "event_id": "EVT_0100",
+      "peak_time": "2026-09-10 17:12:00",
+      "class": "C1.6",
+      "group": "C+",
+      "partition": "Final test"
+    },
+    {
+      "event_id": "EVT_0102",
+      "peak_time": "2026-09-10 20:07:00",
+      "class": "B8.1",
+      "group": "B",
+      "partition": "Final test"
+    },
+    {
+      "event_id": "EVT_0105",
+      "peak_time": "2026-09-10 23:36:00",
+      "class": "B6.5",
+      "group": "B",
+      "partition": "Final test"
+    },
+    {
+      "event_id": "EVT_0107",
+      "peak_time": "2026-09-11 01:14:00",
+      "class": "B5.3",
+      "group": "B",
+      "partition": "Final test"
+    }
+  ],
+  "development_models": [
+    {
+      "Model": "Logistic Regression",
+      "Partition": "Development",
+      "N": 6,
+      "B_Support": 1,
+      "C_plus_Support": 5,
+      "Accuracy": 1.0,
+      "B_Precision": 1.0,
+      "B_Recall": 1,
+      "B_F1": 1.0,
+      "C_plus_Precision": 1,
+      "C_plus_Recall": 1.0,
+      "C_plus_F1": 1.0,
+      "Macro_F1": 1.0,
+      "Balanced_Accuracy": 1.0,
+      "Sensitivity": 1.0,
+      "Specificity": 1,
+      "TP": 5,
+      "FP": 0,
+      "TN": 1,
+      "FN": 0
+    },
+    {
+      "Model": "Decision Tree",
+      "Partition": "Development",
+      "N": 6,
+      "B_Support": 1,
+      "C_plus_Support": 5,
+      "Accuracy": 0.833333333333333,
+      "B_Precision": 0.5,
+      "B_Recall": 1,
+      "B_F1": 0.666666666666667,
+      "C_plus_Precision": 1,
+      "C_plus_Recall": 0.8,
+      "C_plus_F1": 0.888888888888889,
+      "Macro_F1": 0.777777777777778,
+      "Balanced_Accuracy": 0.9,
+      "Sensitivity": 0.8,
+      "Specificity": 1,
+      "TP": 4,
+      "FP": 0,
+      "TN": 1,
+      "FN": 1
+    },
+    {
+      "Model": "Random Forest",
+      "Partition": "Development",
+      "N": 6,
+      "B_Support": 1,
+      "C_plus_Support": 5,
+      "Accuracy": 0.833333333333333,
+      "B_Precision": 0.5,
+      "B_Recall": 1,
+      "B_F1": 0.666666666666667,
+      "C_plus_Precision": 1,
+      "C_plus_Recall": 0.8,
+      "C_plus_F1": 0.888888888888889,
+      "Macro_F1": 0.777777777777778,
+      "Balanced_Accuracy": 0.9,
+      "Sensitivity": 0.8,
+      "Specificity": 1,
+      "TP": 4,
+      "FP": 0,
+      "TN": 1,
+      "FN": 1
+    }
+  ],
+  "final_logistic": {
+    "N": 7,
+    "correct": 7,
+    "matrix": {
+      "B_to_B": 5,
+      "B_to_C+": 0,
+      "C+_to_B": 0,
+      "C+_to_C+": 2
+    },
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "balanced_accuracy": 1.0
+  },
+  "loocv": {
+    "Logistic Regression": {
+      "accuracy": 0.9677419,
+      "macro_f1": 0.9665,
+      "balanced_accuracy": 0.9615,
+      "TP": 18,
+      "FP": 1,
+      "TN": 12,
+      "FN": 0
+    },
+    "Decision Tree": {
+      "accuracy": 0.80645,
+      "macro_f1": 0.7961,
+      "balanced_accuracy": 0.7906
+    },
+    "Random Forest": {
+      "accuracy": 0.90323,
+      "macro_f1": 0.89946,
+      "balanced_accuracy": 0.8953
+    }
+  },
+  "corr": {
+    "rise_slope": {
+      "rise_slope": 1.0,
+      "max_roc": 0.9564056751332126,
+      "mean_pos_roc": 0.9678597398268012,
+      "rise_duration_min": -0.1604083455962382,
+      "bg_flux": -0.2864086177164894
+    },
+    "max_roc": {
+      "rise_slope": 0.9564056751332126,
+      "max_roc": 1.0,
+      "mean_pos_roc": 0.9128083868502308,
+      "rise_duration_min": 0.0329845797822848,
+      "bg_flux": -0.1843932979783136
+    },
+    "mean_pos_roc": {
+      "rise_slope": 0.9678597398268012,
+      "max_roc": 0.9128083868502308,
+      "mean_pos_roc": 1.0,
+      "rise_duration_min": -0.2518545368919047,
+      "bg_flux": -0.2810104305197156
+    },
+    "rise_duration_min": {
+      "rise_slope": -0.1604083455962382,
+      "max_roc": 0.0329845797822848,
+      "mean_pos_roc": -0.2518545368919047,
+      "rise_duration_min": 1.0,
+      "bg_flux": 0.4943874471596196
+    },
+    "bg_flux": {
+      "rise_slope": -0.2864086177164894,
+      "max_roc": -0.1843932979783136,
+      "mean_pos_roc": -0.2810104305197156,
+      "rise_duration_min": 0.4943874471596196,
+      "bg_flux": 1.0
+    }
+  },
+  "vif": [
+    {
+      "Predictor": "rise_slope",
+      "VIF": 35.223261768507726
+    },
+    {
+      "Predictor": "max_roc",
+      "VIF": 20.39324715640912
+    },
+    {
+      "Predictor": "mean_pos_roc",
+      "VIF": 19.70216159872996
+    },
+    {
+      "Predictor": "rise_duration_min",
+      "VIF": 2.4638698458174595
+    },
+    {
+      "Predictor": "bg_flux",
+      "VIF": 1.4689690267529167
+    }
+  ],
+  "limitations": [
+    "31 total ML events",
+    "7-event final chronological test",
+    "complete separation / extreme probabilities in ordinary Logistic Regression",
+    "high multicollinearity among rise-rate predictors",
+    "detector and NOAA-matching rules influence the event population",
+    "no external validation",
+    "proof-of-concept; not an operational forecast"
+  ]
+}

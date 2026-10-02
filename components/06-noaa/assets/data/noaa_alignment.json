@@ -1,0 +1,253 @@
+{
+  "example": {
+    "event_id": "EVT_0003",
+    "det_start": "2026-09-04 19:04:00",
+    "det_peak": "2026-09-04 19:21:00",
+    "det_end": "2026-09-04 19:21:00",
+    "noaa_id": "NOAA_0001",
+    "noaa_begin": "2026-09-04T19:02:00Z",
+    "noaa_peak": "2026-09-04T19:30:00Z",
+    "noaa_end": "2026-09-04T19:41:00Z",
+    "noaa_class": "C6.7",
+    "abs_peak_error_min": 9.0
+  },
+  "aggregate": {
+    "noaa_records": 35,
+    "valid_peaks": 34,
+    "detected_events": 115,
+    "matched_detections": 32,
+    "unmatched_detections": 80,
+    "unmatched_noaa": 3,
+    "precision": 0.2857,
+    "recall": 0.9143,
+    "f1": 0.4354,
+    "mean_abs_peak_error": 1.76,
+    "median_abs_peak_error": 0.0
+  },
+  "matched_events": [
+    {
+      "event_id": "EVT_0003",
+      "peak_time": "2026-09-04 19:21:00",
+      "noaa_event_id": "NOAA_0001",
+      "noaa_class": "C6.7",
+      "abs_peak_error_min": 9.0
+    },
+    {
+      "event_id": "EVT_0004",
+      "peak_time": "2026-09-04 21:19:00",
+      "noaa_event_id": "NOAA_0002",
+      "noaa_class": "C1.2",
+      "abs_peak_error_min": 2.0
+    },
+    {
+      "event_id": "EVT_0005",
+      "peak_time": "2026-09-04 22:41:00",
+      "noaa_event_id": "NOAA_0003",
+      "noaa_class": "B9.5",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0011",
+      "peak_time": "2026-09-05 03:53:00",
+      "noaa_event_id": "NOAA_0004",
+      "noaa_class": "B6.2",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0016",
+      "peak_time": "2026-09-05 10:44:00",
+      "noaa_event_id": "NOAA_0005",
+      "noaa_class": "C6.4",
+      "abs_peak_error_min": 1.0
+    },
+    {
+      "event_id": "EVT_0017",
+      "peak_time": "2026-09-05 12:02:00",
+      "noaa_event_id": "NOAA_0006",
+      "noaa_class": "C1.5",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0019",
+      "peak_time": "2026-09-05 15:18:00",
+      "noaa_event_id": "NOAA_0007",
+      "noaa_class": "M1.0",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0020",
+      "peak_time": "2026-09-05 17:46:00",
+      "noaa_event_id": "NOAA_0008",
+      "noaa_class": "C8.5",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0030",
+      "peak_time": "2026-09-06 05:03:00",
+      "noaa_event_id": "NOAA_0009",
+      "noaa_class": "B8.4",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0034",
+      "peak_time": "2026-09-06 10:42:00",
+      "noaa_event_id": "NOAA_0010",
+      "noaa_class": "C5.0",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0036",
+      "peak_time": "2026-09-06 13:34:00",
+      "noaa_event_id": "NOAA_0011",
+      "noaa_class": "C1.1",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0048",
+      "peak_time": "2026-09-07 08:06:00",
+      "noaa_event_id": "NOAA_0012",
+      "noaa_class": "B7.9",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0049",
+      "peak_time": "2026-09-07 09:33:00",
+      "noaa_event_id": "NOAA_0013",
+      "noaa_class": "Unspecified",
+      "abs_peak_error_min": NaN
+    },
+    {
+      "event_id": "EVT_0050",
+      "peak_time": "2026-09-07 14:59:00",
+      "noaa_event_id": "NOAA_0014",
+      "noaa_class": "B7.8",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0054",
+      "peak_time": "2026-09-07 19:35:00",
+      "noaa_event_id": "NOAA_0015",
+      "noaa_class": "C1.0",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0067",
+      "peak_time": "2026-09-08 12:24:00",
+      "noaa_event_id": "NOAA_0016",
+      "noaa_class": "C2.4",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0070",
+      "peak_time": "2026-09-08 15:34:00",
+      "noaa_event_id": "NOAA_0017",
+      "noaa_class": "B6.1",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0072",
+      "peak_time": "2026-09-08 17:43:00",
+      "noaa_event_id": "NOAA_0019",
+      "noaa_class": "C2.8",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0074",
+      "peak_time": "2026-09-08 20:07:00",
+      "noaa_event_id": "NOAA_0020",
+      "noaa_class": "B6.4",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0075",
+      "peak_time": "2026-09-08 20:43:00",
+      "noaa_event_id": "NOAA_0021",
+      "noaa_class": "C1.2",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0076",
+      "peak_time": "2026-09-08 22:24:00",
+      "noaa_event_id": "NOAA_0023",
+      "noaa_class": "C2.6",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0077",
+      "peak_time": "2026-09-08 23:39:00",
+      "noaa_event_id": "NOAA_0024",
+      "noaa_class": "C3.4",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0079",
+      "peak_time": "2026-09-09 04:46:00",
+      "noaa_event_id": "NOAA_0025",
+      "noaa_class": "B5.0",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0080",
+      "peak_time": "2026-09-09 06:10:00",
+      "noaa_event_id": "NOAA_0026",
+      "noaa_class": "C1.5",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0082",
+      "peak_time": "2026-09-09 10:32:00",
+      "noaa_event_id": "NOAA_0027",
+      "noaa_class": "C3.2",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0088",
+      "peak_time": "2026-09-10 00:40:00",
+      "noaa_event_id": "NOAA_0028",
+      "noaa_class": "C1.4",
+      "abs_peak_error_min": 11.0
+    },
+    {
+      "event_id": "EVT_0093",
+      "peak_time": "2026-09-10 07:46:00",
+      "noaa_event_id": "NOAA_0029",
+      "noaa_class": "B6.0",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0097",
+      "peak_time": "2026-09-10 13:50:00",
+      "noaa_event_id": "NOAA_0030",
+      "noaa_class": "B5.6",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0100",
+      "peak_time": "2026-09-10 17:12:00",
+      "noaa_event_id": "NOAA_0031",
+      "noaa_class": "C1.6",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0102",
+      "peak_time": "2026-09-10 20:07:00",
+      "noaa_event_id": "NOAA_0032",
+      "noaa_class": "B8.1",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0105",
+      "peak_time": "2026-09-10 23:36:00",
+      "noaa_event_id": "NOAA_0033",
+      "noaa_class": "B6.5",
+      "abs_peak_error_min": 0.0
+    },
+    {
+      "event_id": "EVT_0107",
+      "peak_time": "2026-09-11 01:14:00",
+      "noaa_event_id": "NOAA_0034",
+      "noaa_class": "B5.3",
+      "abs_peak_error_min": 0.0
+    }
+  ]
+}

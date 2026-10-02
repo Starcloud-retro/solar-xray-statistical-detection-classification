@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Component 05 · Short gaps versus long gaps</title>
+  <link rel="stylesheet" href="component.css">
+</head>
+<body>
+<main class="shell">
+  <section class="intro">
+    <p class="eyebrow">03 · PREPARE DECISION</p>
+    <h1>How do we treat missing minutes without pretending they were measured?</h1>
+    <p>
+      This component compares two real cases from the cleaned GOES X-ray series. In the first, a single missing minute is short enough to be interpolated. In the second,
+      a much longer gap stays missing and creates a break between continuous signal segments.
+    </p>
+  </section>
+
+  <section class="rule-strip">
+    <article class="rule short-rule">
+      <span>RULE A</span>
+      <strong>Short gaps ≤ 3 minutes</strong>
+      <p>Interpolate carefully, then mark the reconstructed rows as imputed rather than observed.</p>
+    </article>
+    <article class="rule long-rule">
+      <span>RULE B</span>
+      <strong>Long gaps &gt; 3 minutes</strong>
+      <p>Preserve as missing, do not bridge the break, and restart the later continuous segment.</p>
+    </article>
+  </section>
+
+  <section class="scrolly">
+    <article class="sticky-card">
+      <div class="visual-head">
+        <div>
+          <p id="stageLabel" class="mini-label">REAL EXAMPLE A · 6 SEP 2026</p>
+          <h2 id="stageTitle">One missing minute inside an otherwise continuous signal</h2>
+        </div>
+        <div id="statusBadge" class="status-badge">RAW GAP</div>
+      </div>
+      <svg id="gapChart" viewBox="0 0 900 440" role="img" aria-label="Gap preprocessing example chart"></svg>
+      <div class="row-strip" id="rowStrip"></div>
+      <p id="caption" class="caption">19:34 UTC has no direct raw measurement. The surrounding minutes remain observed.</p>
+    </article>
+
+    <article class="steps">
+      <section class="step active" data-step="0"><span>STEP 1</span><h3>See the raw short gap</h3><p>One minute is missing inside an otherwise continuous section of the signal.</p></section>
+      <section class="step" data-step="1"><span>STEP 2</span><h3>Apply the short-gap rule</h3><p>Because the gap length is only one minute, it satisfies the ≤ 3 minute interpolation rule.</p></section>
+      <section class="step" data-step="2"><span>STEP 3</span><h3>Reconstruct — but mark it honestly</h3><p>The cleaned value is inserted and flagged as imputed so later analysis can distinguish it from a true observation.</p></section>
+      <section class="step" data-step="3"><span>STEP 4</span><h3>Now compare a long gap</h3><p>A six-minute absence is too long to reconstruct safely.</p></section>
+      <section class="step" data-step="4"><span>STEP 5</span><h3>Preserve the break</h3><p>The cleaned series stays broken across the long gap. No false line is drawn between the two sides.</p></section>
+      <section class="step" data-step="5"><span>STEP 6</span><h3>Start a new usable segment</h3><p>Rows after the long gap belong to a later continuous segment for downstream calculations.</p></section>
+    </article>
+  </section>
+</main>
+<script src="component.js"></script>
+</body>
+</html>

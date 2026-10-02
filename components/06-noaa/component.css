@@ -1,0 +1,36 @@
+
+:root{--bg:#f3f6fa;--paper:#fff;--ink:#0d1d33;--muted:#60738e;--line:#d9e5ef;--navy:#071a30;--cyan:#34bde8;--orange:#ff8c42;--gold:#efb44e;--teal:#3fa68d;--red:#cf7054;--violet:#7167d8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}.shell{width:min(1260px,calc(100vw - 28px));margin:auto;padding:48px 0 70px}.eyebrow,.label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:900;color:#4f82a1}.intro{max-width:1000px}.intro h1,.card h2,.step h3,.callout h2{font-family:Georgia,"Times New Roman",serif;line-height:1.04;letter-spacing:-.025em}.intro h1{font-size:clamp(38px,5vw,62px);margin:.15em 0 .22em}.intro p{font-size:18px;line-height:1.65;color:var(--muted)}.card{background:#fff;border:1px solid var(--line);border-radius:26px;box-shadow:0 24px 60px rgba(11,31,54,.08);overflow:hidden}.card-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;padding:22px 24px 10px}.card h2{font-size:32px;margin:.15em 0}.badge{padding:8px 11px;border-radius:999px;background:#edf7fb;color:#337996;font-size:11px;font-weight:900}.scrolly{display:grid;grid-template-columns:minmax(620px,1.15fr) minmax(340px,.85fr);gap:4vw;margin-top:30px}.sticky{position:sticky;top:24px;align-self:start}.steps{padding-top:30px}.step{min-height:62vh;display:flex;flex-direction:column;justify-content:center;padding-left:24px;border-left:1px solid #d4e0ea;opacity:.28;transition:.25s}.step.active{opacity:1}.step>span{font-size:11px;letter-spacing:.11em;font-weight:900;color:#4e87a4}.step h3{font-size:31px;margin:.35em 0}.step p{font-size:17px;line-height:1.62;color:var(--muted)}.question{padding:14px 16px;border-left:4px solid var(--orange);background:#fff6ef;border-radius:0 13px 13px 0}.chart{background:linear-gradient(180deg,#0b223a,#07182b);border-radius:18px;margin:12px 18px 18px;min-height:390px;position:relative;overflow:hidden}.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 18px 18px}.metric{padding:13px;border:1px solid var(--line);border-radius:14px;background:#f8fbfd}.metric span{display:block;font-size:10px;color:#71869c;text-transform:uppercase;letter-spacing:.08em;font-weight:850}.metric strong{display:block;margin-top:5px;font-size:19px}.callout{margin-top:34px;padding:24px 26px;border-radius:24px;background:linear-gradient(135deg,#0b2139,#123b5d);color:#fff}.callout h2{font-size:34px;margin:.15em 0}.callout p{color:#c9d8e7;line-height:1.6}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini{padding:18px;border-radius:17px;background:#fff;border:1px solid var(--line)}.mini strong{display:block;font-size:23px}.mini span{display:block;color:var(--muted);font-size:13px;margin-top:3px}.legend{display:flex;gap:14px;flex-wrap:wrap;padding:0 20px 16px;color:#667c93;font-size:12px}.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}.svg{display:block;width:100%;height:auto}.axis{fill:#a8bed0;font-size:11px}.gridline{stroke:rgba(255,255,255,.08);stroke-width:1}.line{fill:none;stroke:#59d4f2;stroke-width:2.5}.dot{fill:#59d4f2;stroke:#fff;stroke-width:1.5}.orange{stroke:#ff984a;fill:#ff984a}.gold{stroke:#efb44e;fill:#efb44e}.teal{stroke:#50c5a8;fill:#50c5a8}.red{stroke:#d9775c;fill:#d9775c}.violet{stroke:#8d83ed;fill:#8d83ed}
+@media(max-width:1000px){.scrolly{grid-template-columns:1fr}.sticky{position:relative;top:auto}.step{min-height:auto;opacity:1;padding:30px 0 30px 18px}.metric-row,.grid3{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.shell{width:min(100vw - 16px,1260px);padding-top:32px}.intro p,.step p{font-size:15px}.metric-row,.grid3{grid-template-columns:1fr}.card-head{flex-direction:column}.chart{margin:8px}.step h3{font-size:27px}}
+
+/* v5 unified research-story theme */
+html,body{background:#071422 !important;color:#eef5ff !important}
+body{background:
+radial-gradient(circle at 15% 0%,rgba(255,145,60,.08),transparent 28%),
+radial-gradient(circle at 88% 8%,rgba(63,190,235,.08),transparent 24%),
+#071422 !important}
+.shell{padding-top:32px !important;padding-bottom:48px !important}
+.intro{display:none !important}
+.card,.sticky-card,.window-card,.story-frame,.compare,.clarity-panel{background:#0b1b2c !important;border-color:rgba(125,168,210,.18) !important;box-shadow:0 22px 55px rgba(0,0,0,.22) !important}
+.card h2,.sticky-card h2,.compare h2,.clarity-panel h2,.daily-title h2,.density-copy h2,.timeline-title h2,.step h3,.panel-heading h2,.handoff h2{color:#f7fbff !important}
+.step p,.caption,.row-explanation p,.density-copy p,.daily-title p,.compare-grid p,.dataset-levels p{color:#aebfd2 !important}
+.step{border-left-color:rgba(124,162,199,.22) !important}
+.step.active{opacity:1 !important}
+.question,.why{background:rgba(255,150,64,.09) !important;color:#f2c59f !important}
+.metric,.mini,.row-token,.dataset-levels article,.compare-grid article,.rule,.equation.secondary{background:#0d2237 !important;border-color:rgba(126,169,211,.18) !important;color:#f7fbff !important}
+.metric span,.mini span,.row-token span,.dataset-levels p,.compare-grid p{color:#9eb2c7 !important}
+.metric strong,.mini strong,.row-token b,.dataset-levels strong{color:#fff !important}
+.panel-heading,.csv-panel,.chart-panel{background:#0a1b2d !important;border-color:rgba(126,169,211,.18) !important}
+.csv-header{background:#102941 !important;color:#8fcfeb !important;border-color:rgba(126,169,211,.18) !important}
+.csv-row{border-color:rgba(126,169,211,.12) !important;color:#9db4c8 !important}
+.csv-row.active{background:linear-gradient(90deg,rgba(59,190,235,.17),rgba(59,190,235,.03)) !important;color:#fff !important}
+.story-topline,.window-head{background:rgba(126,169,211,.14) !important}
+.story-topline>div,.window-head>div{background:#0c2136 !important;color:#fff !important}
+.row-explanation{background:#0b2033 !important}.row-explanation strong{color:#fff !important}
+.timeline-block,.daily-section{background:#0b1b2c !important}.density-section{background:linear-gradient(180deg,#0a1c2e,#081624) !important}
+.timeline-track::before{background:#16344c !important}.day-bar span,.timeline-count span,.axis-label{color:#9eb2c7 !important;fill:#9eb2c7 !important}
+.day-bar .bar strong{color:#ddecf7 !important}
+.rule-strip{color:#fff}.rule p{color:#9eb2c7 !important}
+.handoff,.callout{background:linear-gradient(135deg,#0e2740,#123a58) !important}
+.handoff h2,.callout h2{color:#fff !important}.handoff p,.callout p{color:#bfd0df !important}
+code{color:#8ce7ff}

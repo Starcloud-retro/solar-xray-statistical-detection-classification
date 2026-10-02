@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Component 04 · From 10,078 Rows to 31 ML Events</title>
+  <link rel="stylesheet" href="component.css">
+</head>
+<body>
+<main class="shell">
+  <section class="intro">
+    <p class="eyebrow">07 · EVENT DATASET</p>
+    <h1>How does a seven-day time series become only 31 machine-learning events?</h1>
+    <p>
+      The answer is not “we threw away almost all the data.” The project changes what one row means.
+      First, one row means one minute. Later, one row means one independent physical event.
+    </p>
+  </section>
+
+  <section class="unit-key">
+    <div><span class="dot minute"></span><b>Minute observation</b><small>one timestamp + X-ray flux value</small></div>
+    <div><span class="dot event"></span><b>Detected event</b><small>several unusual minutes grouped together</small></div>
+    <div><span class="dot physical"></span><b>Physical NOAA-linked event</b><small>one independent flare-level example</small></div>
+    <div><span class="dot ml"></span><b>ML row</b><small>one labeled event with five legal predictors</small></div>
+  </section>
+
+  <section class="scrolly">
+    <div class="visual-wrap">
+      <div class="sticky-visual">
+        <div class="visual-head">
+          <div>
+            <span class="mini-label" id="stageLabel">STAGE 1 · OBSERVATIONS</span>
+            <h2 id="stageTitle">10,078 minute-level measurements</h2>
+          </div>
+          <div class="main-counter">
+            <strong id="mainCounter">10,078</strong>
+            <span id="counterUnit">observations</span>
+          </div>
+        </div>
+
+        <div id="visualCanvas" class="visual-canvas"></div>
+
+        <div class="stage-caption" id="stageCaption">
+          Every tiny cyan mark represents one XRS-B timestamp. These marks are measurements, not flares.
+        </div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <article class="step active" data-step="0">
+        <span>01 · START WITH THE TIME SERIES</span>
+        <h3>At first, one row means one minute.</h3>
+        <p>
+          Across roughly seven days, the cleaned XRS-B file contains <strong>10,078 time-stamped observations</strong>.
+          Machine learning is not applied directly to these minute rows.
+        </p>
+        <p class="question">So what turns many neighboring minutes into one event?</p>
+      </article>
+
+      <article class="step" data-step="1">
+        <span>02 · DETECTION CHANGES THE UNIT</span>
+        <h3>Persistent unusual minutes are grouped into 115 event detections.</h3>
+        <p>
+          The detector does not label every high minute independently. It combines consecutive unusual behavior
+          into event intervals with a START, PEAK and END.
+        </p>
+        <p class="question">But are all 115 detections official NOAA flares?</p>
+      </article>
+
+      <article class="step" data-step="2">
+        <span>03 · NOAA IS AN INDEPENDENT REFERENCE</span>
+        <h3>Detected events are compared with NOAA records rather than automatically treated as truth.</h3>
+        <p>
+          In the frozen alignment results, <strong>32 detections matched NOAA</strong>,
+          <strong>80 detections had no NOAA match</strong>, and <strong>3 NOAA events were not recovered</strong>.
+        </p>
+        <p>
+          An unmatched statistical detection is not automatically a false physical flare; it may be sub-B activity,
+          noise, or activity not represented in the official list.
+        </p>
+        <p class="question">So why does the ML dataset construction mention 35 labeled rows and then 32 physical events?</p>
+      </article>
+
+      <article class="step" data-step="3">
+        <span>04 · ONE PHYSICAL EVENT MUST EQUAL ONE ML EXAMPLE</span>
+        <h3>The supervised event table contained 35 labeled rows, but three NOAA flares appeared twice.</h3>
+        <p>
+          For those three physical NOAA events, two detector segments referred to the same flare.
+          Keeping both would give the same physical event extra influence in machine learning.
+        </p>
+        <p>
+          Deduplication keeps one primary detection for each physical flare, reducing
+          <strong>35 labeled rows → 32 independent physical events</strong>.
+        </p>
+      </article>
+
+      <article class="step" data-step="4">
+        <span>05 · CLASS ELIGIBILITY</span>
+        <h3>Those 32 independent events contain B, C, M and one unspecified event.</h3>
+        <p>
+          After deduplication, the class counts are:
+          <strong>13 B, 17 C, 1 M and 1 U</strong>.
+        </p>
+        <p>
+          The frozen target is <strong>B vs C+</strong>, where C+ combines C and M.
+          The one U event has no usable B/C/M target, so it is excluded.
+        </p>
+      </article>
+
+      <article class="step" data-step="5">
+        <span>06 · FINAL ML DATASET</span>
+        <h3>The final supervised dataset has 31 independent labeled events.</h3>
+        <p>
+          The final class balance is <strong>13 B</strong> and <strong>18 C+</strong>.
+          Each of these 31 rows is a physical event described by the same five rise-phase predictors.
+        </p>
+        <p class="question">The next question is no longer “where did 31 come from?” — it is “what information does each of those 31 event rows contain?”</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="clarity-panel">
+    <div>
+      <span class="mini-label">THE DISTINCTION TO REMEMBER</span>
+      <h2>There are three different datasets hiding inside one project.</h2>
+    </div>
+    <div class="dataset-levels">
+      <article>
+        <strong>10,078</strong>
+        <b>time-series rows</b>
+        <p>Used to estimate background, detect unusual behavior and construct events.</p>
+      </article>
+      <article>
+        <strong>115</strong>
+        <b>statistical detections</b>
+        <p>Candidate event intervals created by the detector.</p>
+      </article>
+      <article>
+        <strong>31</strong>
+        <b>ML-eligible physical events</b>
+        <p>Independent labeled B/C+ events used in the final classification experiment.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="handoff">
+    <span class="mini-label">NEXT COMPONENT</span>
+    <h2>Now go back in time: how did we make the minute-level signal safe enough to detect events at all?</h2>
+    <p>
+      Component 05 will show the real one-minute gap, the real six-minute long gap, the interpolation rule,
+      and why long gaps break the series into separate continuous segments.
+    </p>
+  </section>
+</main>
+<script src="component.js"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+{
+  "short_gap": [
+    {
+      "time_tag": "2026-09-06 19:30:00+00:00",
+      "raw_flux": 3.829061085980357e-07,
+      "clean_flux": 3.829061085980354e-07,
+      "raw_log10": -6.416907705187289,
+      "clean_log10": -6.416907705187289,
+      "gap_size_mins": 0,
+      "segment_id": 202,
+      "was_imputed": false,
+      "is_long_gap": false
+    },
+    {
+      "time_tag": "2026-09-06 19:31:00+00:00",
+      "raw_flux": 3.852998133879737e-07,
+      "clean_flux": 3.852998133879737e-07,
+      "raw_log10": -6.414201201328533,
+      "clean_log10": -6.414201201328533,
+      "gap_size_mins": 0,
+      "segment_id": 202,
+      "was_imputed": false,
+      "is_long_gap": false
+    },
+    {
+      "time_tag": "2026-09-06 19:32:00+00:00",
+      "raw_flux": 3.896359714872233e-07,
+      "clean_flux": 3.896359714872233e-07,
+      "raw_log10": -6.409340955547895,
+      "clean_log10": -6.409340955547895,
+      "gap_size_mins": 0,
+      "segment_id": 202,
+      "was_imputed": false,
+      "is_long_gap": false
+    },
+    {
+      "time_tag": "2026-09-06 19:33:00+00:00",
+      "raw_flux": 3.889767583586945e-07,
+      "clean_flux": 3.889767583586944e-07,
+      "raw_log10": -6.410076347306983,
+      "clean_log10": -6.410076347306983,
+      "gap_size_mins": 0,
+      "segment_id": 202,
+      "was_imputed": false,
+      "is_long_gap": false
+    },
+    {
+      "time_tag": "2026-09-06 19:34:00+00:00",
+      "raw_flux": null,
+      "clean_flux": 3.872302027480114e-07,
+      "raw_log10": null,
+      "clean_log10": -6.412030776427569,
+      "gap_size_mins": 1,
+      "segment_id": 202,
+      "was_imputed": true,
+      "is_long_gap": false
+    },
+    {
+      "time_tag": "2026-09-06 19:35:00+00:00",
+      "raw_flux": 3.8549148939637234e-07,
+      "clean_flux": 3.854914893963725e-07,
+      "raw_log10": -6.413985205548155,
+      "clean_log10": -6.413985205548155,
+      "gap_size_mins": 0,
+      "segment_id": 202,
+      "was_imputed": false,
+      "is_long_gap": false
+    },
+    {
+      "time_tag": "2026-09-06 19:36:00+00:00",
+      "raw_flux": 3.85736257157987e-07,
+      "clean_flux": 3.85736257157987e-07,
+      "raw_log10": -6.413709537842316,
+      "clean_log10": -6.413709537842316,
+      "gap_size_mins": 0,
+      "segment_id": 202,
+      "was_imputed": false,
+      "is_long_gap": false
+    },
+    {
+      "time_tag": "2026-09-06 19:37:00+00:00",
+      "raw_flux": 3.850719849651796e-07,
+      "clean_flux": 3.8507198496517995e-07,
+      "raw_log10": -6.414458076333397,
+      "clean_log10": -6.414458076333397,
+      "gap_size_mins": 0,
+      "segment_id": 202,
+      "was_imputed": false,
+      "is_long_gap": false
+    },
+    {
+      "time_tag": "2026-09-06 19:38:00+00:00",
+      "raw_flux": 3.846437834909011e-07,
+      "clean_flux": 3.846437834909015e-07,
+      "raw_log10": -6.414941282119812,
+      "clean_log10": -6.414941282119812,
+      "gap_size_mins": 0,
+      "segment_id": 202,
+      "was_imputed": false,
+      "is_long_gap": false
+    },
+    {
+      "time_tag": "2026-09-06 19:39:00+00:00",
+      "raw_flux": 3.854946157844097e-07,
+      "clean_flux": 3.854946157844093e-07,
+      "raw_log10": -6.413981683375541,
+      "clean_log10": -6.413981683375541,
+      "gap_size_mins": 0,
+      "segment_id": 202,
+      "was_imputed": false,
+      "is_long_gap": false
+    }
+  ],
+  "long_gap": [
+    {
+      "time_tag": "2026-09-04 16:27:00+00:00",
+      "raw_flux": 7.753683917144372e-07,
+      "clean_flux": 7.753683917144371e-07,
+      "raw_log10": -6.110491907202679,
+      "clean_log10": -6.110491907202679,
+      "gap_size_mins": 0,
+      "segment_id": 0,
+      "was_imputed": false,
+      "is_long_gap": false
+    },
+    {
+      "time_tag": "2026-09-04 16:28:00+00:00",
+      "raw_flux": 7.686037406529067e-07,
+      "clean_flux": 7.686037406529066e-07,
+      "raw_log10": -6.1142975062352365,
+      "clean_log10": -6.1142975062352365,
+      "gap_size_mins": 0,
+      "segment_id": 0,
+      "was_imputed": false,
+      "is_long_gap": false
+    },
+    {
+      "time_tag": "2026-09-04 16:29:00+00:00",
+      "raw_flux": 7.601672109558422e-07,
+      "clean_flux": 7.601672109558424e-07,
+      "raw_log10": -6.1190908671823445,
+      "clean_log10": -6.1190908671823445,
+      "gap_size_mins": 0,
+      "segment_id": 0,
+      "was_imputed": false,
+      "is_long_gap": false
+    },
+    {
+      "time_tag": "2026-09-04 16:30:00+00:00",
+      "raw_flux": 7.550824534519052e-07,
+      "clean_flux": 7.550824534519055e-07,
+      "raw_log10": -6.122005621716552,
+      "clean_log10": -6.122005621716552,
+      "gap_size_mins": 0,
+      "segment_id": 0,
+      "was_imputed": false,
+      "is_long_gap": false
+    },
+    {
+      "time_tag": "2026-09-04 16:31:00+00:00",
+      "raw_flux": null,
+      "clean_flux": null,
+      "raw_log10": null,
+      "clean_log10": null,
+      "gap_size_mins": 6,
+      "segment_id": 1,
+      "was_imputed": false,
+      "is_long_gap": true
+    },
+    {
+      "time_tag": "2026-09-04 16:32:00+00:00",
+      "raw_flux": null,
+      "clean_flux": null,
+      "raw_log10": null,
+      "clean_log10": null,
+      "gap_size_mins": 6,
+      "segment_id": 2,
+      "was_imputed": false,
+      "is_long_gap": true
+    },
+    {
+      "time_tag": "2026-09-04 16:33:00+00:00",
+      "raw_flux": null,
+      "clean_flux": null,
+      "raw_log10": null,
+      "clean_log10": null,
+      "gap_size_mins": 6,
+      "segment_id": 3,
+      "was_imputed": false,
+      "is_long_gap": true
+    },
+    {
+      "time_tag": "2026-09-04 16:34:00+00:00",
+      "raw_flux": null,
+      "clean_flux": null,
+      "raw_log10": null,
+      "clean_log10": null,
+      "gap_size_mins": 6,
+      "segment_id": 4,
+      "was_imputed": false,
+      "is_long_gap": true
+    },
+    {
+      "time_tag": "2026-09-04 16:35:00+00:00",
+      "raw_flux": null,
+      "clean_flux": null,
+      "raw_log10": null,
+      "clean_log10": null,
+      "gap_size_mins": 6,
+      "segment_id": 5,
+      "was_imputed": false,
+      "is_long_gap": true
+    },
+    {
+      "time_tag": "2026-09-04 16:36:00+00:00",
+      "raw_flux": null,
+      "clean_flux": null,
+      "raw_log10": null,
+      "clean_log10": null,
+      "gap_size_mins": 6,
+      "segment_id": 6,
+      "was_imputed": false,
+      "is_long_gap": true
+    },
+    {
+      "time_tag": "2026-09-04 16:37:00+00:00",
+      "raw_flux": 7.260702545863751e-07,
+      "clean_flux": 7.260702545863746e-07,
+      "raw_log10": -6.1390213549155925,
+      "clean_log10": -6.1390213549155925,
+      "gap_size_mins": 0,
+      "segment_id": 6,
+      "was_imputed": false,
+      "is_long_gap": false
+    },
+    {
+      "time_tag": "2026-09-04 16:38:00+00:00",
+      "raw_flux": 7.266655188686855e-07,
+      "clean_flux": 7.266655188686853e-07,
+      "raw_log10": -6.138665447100457,
+      "clean_log10": -6.138665447100457,
+      "gap_size_mins": 0,
+      "segment_id": 6,
+      "was_imputed": false,
+      "is_long_gap": false
+    },
+    {
+      "time_tag": "2026-09-04 16:39:00+00:00",
+      "raw_flux": 7.286207619472407e-07,
+      "clean_flux": 7.286207619472402e-07,
+      "raw_log10": -6.137498457756946,
+      "clean_log10": -6.137498457756946,
+      "gap_size_mins": 0,
+      "segment_id": 6,
+      "was_imputed": false,
+      "is_long_gap": false
+    },
+    {
+      "time_tag": "2026-09-04 16:40:00+00:00",
+      "raw_flux": 7.190137125689944e-07,
+      "clean_flux": 7.190137125689944e-07,
+      "raw_log10": -6.143262826951945,
+      "clean_log10": -6.143262826951945,
+      "gap_size_mins": 0,
+      "segment_id": 6,
+      "was_imputed": false,
+      "is_long_gap": false
+    }
+  ],
+  "short_gap_time": "2026-09-06 19:34:00+00:00",
+  "short_gap_clean_flux": 3.872302027480114e-07,
+  "short_gap_clean_log10": -6.412030776427569,
+  "short_gap_segment_id": 202,
+  "long_gap_start": "2026-09-04 16:31:00+00:00",
+  "long_gap_end": "2026-09-04 16:36:00+00:00",
+  "segment_before_long_gap": 0,
+  "segment_after_long_gap": 6
+}

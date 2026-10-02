@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Component 03 · Dataset Window</title>
+  <link rel="stylesheet" href="component.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="intro">
+      <p class="eyebrow">02 · COUNT</p>
+      <h1>10,078 observations came from roughly seven days of minute-level GOES XRS-B measurements.</h1>
+      <p>
+        Before counting events, we first need to understand the scale of the raw time series.
+        These 10,078 rows are time-stamped measurements spread across one continuous study window —
+        not 10,078 flares.
+      </p>
+    </section>
+
+    <section class="window-card">
+      <div class="window-head">
+        <div>
+          <span class="label">STUDY WINDOW</span>
+          <strong id="windowText">loading…</strong>
+        </div>
+        <div>
+          <span class="label">CHANNEL</span>
+          <strong>GOES XRS-B · 0.1–0.8 nm</strong>
+        </div>
+        <div>
+          <span class="label">CADENCE</span>
+          <strong>≈ 1 minute</strong>
+        </div>
+      </div>
+
+      <div class="timeline-block">
+        <div class="timeline-title">
+          <div>
+            <span class="label">FROM FIRST ROW TO LAST ROW</span>
+            <h2 id="daysText">~7 days</h2>
+          </div>
+          <div class="timeline-count">
+            <strong id="rowCount">10,078</strong>
+            <span>actual XRS-B rows</span>
+          </div>
+        </div>
+
+        <div class="timeline-track">
+          <div class="timeline-fill" id="timelineFill"></div>
+          <div class="tick first"><span id="startDate">—</span><small id="startTime">—</small></div>
+          <div class="tick last"><span id="endDate">—</span><small id="endTime">—</small></div>
+          <div class="day-markers" id="dayMarkers"></div>
+        </div>
+      </div>
+
+      <div class="density-section">
+        <div class="density-copy">
+          <span class="label">WHAT DOES “10,078” ACTUALLY MEAN?</span>
+          <h2>Think in minutes first, not events.</h2>
+          <p>
+            At approximately one measurement per minute, seven days naturally produces around ten thousand
+            timestamped observations. The detector later decides whether groups of unusual consecutive minutes
+            should be treated as events.
+          </p>
+
+          <div class="equation">
+            <strong>7 days × 24 hours × 60 minutes</strong>
+            <span>≈ 10,080 minute positions</span>
+          </div>
+
+          <div class="equation secondary">
+            <strong id="actualEquation">10,078 actual rows</strong>
+            <span id="coverageText">≈ 99.98% of minute positions represented</span>
+          </div>
+        </div>
+
+        <div class="density-visual">
+          <div class="density-top">
+            <span>Each tiny mark = one CSV row</span>
+            <strong id="densityCounter">0 / 10,078</strong>
+          </div>
+          <canvas id="densityCanvas" width="900" height="470"></canvas>
+          <div class="density-caption">
+            The marks accumulate by time. They represent observations, not detected flares.
+          </div>
+        </div>
+      </div>
+
+      <div class="daily-section">
+        <div class="daily-title">
+          <span class="label">ROWS TOUCHING EACH CALENDAR DATE</span>
+          <h2>Why are there parts of eight dates if the study is only about seven days long?</h2>
+          <p>
+            Because the window begins partway through 4 September and ends partway through 11 September.
+            It spans roughly seven elapsed days while touching eight calendar dates.
+          </p>
+        </div>
+        <div id="dayBars" class="day-bars"></div>
+      </div>
+
+      <div class="handoff">
+        <div class="handoff-left">
+          <span class="label">NEXT SCIENTIFIC CHANGE OF UNIT</span>
+          <h2>Minute-level observations are not the units used for machine learning.</h2>
+          <p>
+            The next component will show how thousands of measurements become a much smaller set of
+            statistically detected event intervals, then NOAA-linked physical events, and finally 31 ML-eligible events.
+          </p>
+        </div>
+        <div class="handoff-chain">
+          <div class="big-node">
+            <strong>10,078</strong>
+            <span>observations</span>
+          </div>
+          <i>→</i>
+          <div class="ghost-node">
+            <strong>?</strong>
+            <span>events</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="component.js"></script>
+</body>
+</html>

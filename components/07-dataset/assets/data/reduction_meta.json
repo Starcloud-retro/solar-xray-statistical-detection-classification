@@ -1,0 +1,25 @@
+{
+  "observations": 10078,
+  "detections": 115,
+  "alignment": {
+    "matched_detections": 32,
+    "unmatched_detections": 80,
+    "unmatched_noaa": 3,
+    "valid_noaa_peaks": 34,
+    "noaa_records": 35
+  },
+  "labeled_rows_before_dedup": 35,
+  "duplicate_noaa_events": 3,
+  "physical_events_after_dedup": 32,
+  "class_counts_after_dedup": {
+    "B": 13,
+    "C": 17,
+    "M": 1,
+    "U": 1
+  },
+  "ml_counts": {
+    "B": 13,
+    "C_plus": 18,
+    "total": 31
+  }
+}
