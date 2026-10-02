@@ -1,7 +1,7 @@
 R/
 src/
 tests/
-data/
+# data/ is required at runtime by js/loader.js; keep it in deployments.
 reports/
 app.R
 *.md

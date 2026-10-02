@@ -46,24 +46,23 @@ install.packages(c("shiny","jsonlite","rpart","randomForest"))
 git status
 ```
 
-Expected changes include:
-- `index.html`
-- `styles.css`
-- `app.R`
+For the static deployment fix, expected changes are:
 - `.vercelignore`
+- `vercel.json`
 - `README.md`
-- deletion of `requirements.txt`
-- addition of `requirements-python.txt`
+- `FINAL_PRESENTATION_DEPLOYMENT_GUIDE.md`
+- addition of `assets/presentation/index.html`
+- addition of `tests/deployment.mjs`
 
 ## Step 6 — Commit
 ```powershell
-git add .
-git commit -m "Final presentation polish: guided website and Shiny GUI"
+git add .vercelignore vercel.json README.md FINAL_PRESENTATION_DEPLOYMENT_GUIDE.md assets/presentation/index.html tests/deployment.mjs
+git commit -m "Fix root static deployment and include runtime data"
 ```
 
 ## Step 7 — Push
 ```powershell
-git push
+git push origin main
 ```
 
 ## Step 8 — Vercel
@@ -71,12 +70,17 @@ The GitHub push should trigger a deployment automatically.
 
 Vercel settings:
 - Framework Preset: `Other`
-- Root Directory: `./`
-- Build Command: leave blank/default
-- Output Directory: leave blank/default
-- Install Command: leave blank/default
+- Root Directory: leave empty (repository root)
+- Production Branch: `main`
+- Build Command: override with an empty value
+- Output Directory: `.`
+- Install Command: override with an empty value
 
-The Python dependency file is intentionally named `requirements-python.txt`, not `requirements.txt`, so Vercel does not mis-detect the static site as a Python app.
+`vercel.json` pins the framework, build, install, and output settings for this
+static website. Python and R files are research sources; no server runtime or
+dependency installation is needed. Keep `data/` and `assets/` in the deployment;
+excluding `data/` in `.vercelignore` breaks the browser's CSV/JSON requests even
+when those files are committed to Git.
 
 ## Step 9 — Verify the public site
 Open the Vercel URL in an incognito/private window and verify:
@@ -84,6 +88,12 @@ Open the Vercel URL in an incognito/private window and verify:
 - figures load
 - GitHub button works
 - no Python entrypoint error
+- `/data/goes_xrs_cleaned.csv` and `/data/derived/ground_truth.json` return HTTP 200
+- `/assets/presentation/` returns HTTP 200 after following redirects
+- `/assets/presentation/slide-01.jpg` and `/assets/presentation/Solar_Activity.pptx` return HTTP 200
+- `/assets/fonts/fraunces-latin-opsz-normal.woff2` returns HTTP 200
+
+Before pushing, run `node tests/validate.mjs` and `node tests/deployment.mjs`.
 
 ## What changed
 ### Website
